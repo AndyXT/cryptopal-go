@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+ )
 
 func main() {
     fmt.Println("vim-go")
@@ -38,15 +40,16 @@ func hexToBase64(hexStr string) string {
 }
 
 func hexStrToByteArray(hexStrSlice []rune) []byte {
-    var bytesArray []byte
+    bytesSlice := make([]byte, 0, len(hexStrSlice)/2)
 
     for i := 0; i < len(hexStrSlice); i += 2 {
         char1 := hexStrSlice[i]
         char2 := hexStrSlice[i+1]
-
+        byteVal := hexCharToByte(char1) * 16 + hexCharToByte(char2)
+        bytesSlice = append(bytesSlice, byteVal)
     }
 
-    return bytesArray
+    return bytesSlice
 }
 
 func hexCharToByte(char rune) byte {
@@ -55,6 +58,10 @@ func hexCharToByte(char rune) byte {
     switch {
     case char >= '0' && char <= '9':
         hexByte = byte(char) - byte('0')
+    case char >= 'a' && char <= 'f':
+        hexByte = byte(char) - byte('a')
+    case char >= 'A' && char <= 'F':
+        hexByte = byte(char) - byte('A')
     default:
         fmt.Println("error")
     }
@@ -63,7 +70,24 @@ func hexCharToByte(char rune) byte {
 }
 
 func bytesToBase64Str(bytes []byte) string {
+    base64Alphabet := [64]rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'}
     var b64Str string
+
+    u32Slice := make([]uint32, 0, len(bytes)/3)
+    for i := 0; i < len(bytes); i += 3 {
+        val := uint32(bytes[i]) << 16
+        val |= uint32(bytes[i+1]) << 8
+        val |= uint32(bytes[i+2])
+        u32Slice = append(u32Slice, val)
+    }
+
+    newByteSlice := make([]byte, 0, len(u32Slice) * 4)
+    for i := 0; i < len(u32Slice); i += 3 {
+        for j := 0; j < 4; j += 3 {
+            var idx byte = byte((u32Slice[i] >> (18 - j * 6)) & 0x3F)
+            newByteSlice = append(newByteSlice, idx)
+        }
+    }
 
     return b64Str
 }
