@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
- )
+)
 
 func main() {
     fmt.Println("vim-go")
@@ -18,8 +18,9 @@ func challenge1_1() {
 
     b64Str = hexToBase64(hex)
 
+    fmt.Printf("%s", b64Str)
     if b64 != b64Str {
-        fmt.Println("Error")
+        fmt.Println("Error: challenge1")
     }
 }
 
@@ -29,7 +30,7 @@ func hexToBase64(hexStr string) string {
     hexStrSlice := []rune(hexStr)
 
     if hexStrSize % 2 != 0 {
-        fmt.Println("error")
+        fmt.Println("error: hexToBase64")
     }
 
     hexToBytes := hexStrToByteArray(hexStrSlice)
@@ -59,19 +60,19 @@ func hexCharToByte(char rune) byte {
     case char >= '0' && char <= '9':
         hexByte = byte(char) - byte('0')
     case char >= 'a' && char <= 'f':
-        hexByte = byte(char) - byte('a')
+        hexByte = byte(char) - byte('a') + 10
     case char >= 'A' && char <= 'F':
-        hexByte = byte(char) - byte('A')
+        hexByte = byte(char) - byte('A') + 10
     default:
-        fmt.Println("error")
-    }
+        fmt.Println("error: hexCharToByte")
+}
 
     return hexByte
 }
 
 func bytesToBase64Str(bytes []byte) string {
     base64Alphabet := [64]rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'}
-    var b64Str string
+    b64Str := make([]rune, 0, len(bytes)*4/3)
 
     u32Slice := make([]uint32, 0, len(bytes)/3)
     for i := 0; i < len(bytes); i += 3 {
@@ -81,13 +82,12 @@ func bytesToBase64Str(bytes []byte) string {
         u32Slice = append(u32Slice, val)
     }
 
-    newByteSlice := make([]byte, 0, len(u32Slice) * 4)
-    for i := 0; i < len(u32Slice); i += 3 {
-        for j := 0; j < 4; j += 3 {
+    for i := 0; i < len(u32Slice); i++ {
+        for j := 0; j < 4; j++ {
             var idx byte = byte((u32Slice[i] >> (18 - j * 6)) & 0x3F)
-            newByteSlice = append(newByteSlice, idx)
+            b64Str = append(b64Str, base64Alphabet[idx])
         }
     }
 
-    return b64Str
+    return string(b64Str)
 }
