@@ -12,12 +12,12 @@ func main() {
 }
 
 func challenge1_1() {
-    hex := "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
+    hexStr := "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
     b64 := "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"
 
     var b64Str string
 
-    b64Str = hex.ToBase64(hex)
+    b64Str = hex.ToBase64(hexStr)
 
     fmt.Printf("%s", b64Str)
     if b64 != b64Str {
@@ -71,7 +71,7 @@ func hexCharToByte(char rune) byte {
     return hexByte
 }
 
-func byte.ToBase64Str(bytes []byte) string {
+func bytesToBase64Str(bytes []byte) string {
     base64Alphabet := [64]rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'}
     b64Str := make([]rune, 0, len(bytes)*4/3)
 
