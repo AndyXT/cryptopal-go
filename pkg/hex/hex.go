@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+// ToBase64 function    takes a hex string and returns a string representing the base64 value of the hex string.
 func ToBase64(hexStr string) string {
 	var base64 string
 	hexStrSize := len(hexStr)
@@ -21,20 +22,22 @@ func ToBase64(hexStr string) string {
 	return base64
 }
 
+// ToByteArray function    takes a slice of runes(chars) representing a hex string and returns a slice of bytes representing the byte/ascii value of the string.
 func ToByteArray(hexStrSlice []rune) []byte {
 	bytesSlice := make([]byte, 0, len(hexStrSlice)/2)
 
 	for i := 0; i < len(hexStrSlice); i += 2 {
 		char1 := hexStrSlice[i]
 		char2 := hexStrSlice[i+1]
-		byteVal := CharToByte(char1)*16 + CharToByte(char2)
+		byteVal := RuneToByte(char1)*16 + RuneToByte(char2)
 		bytesSlice = append(bytesSlice, byteVal)
 	}
 
 	return bytesSlice
 }
 
-func CharToByte(char rune) byte {
+// RuneToByte function    takes a rune and returns a byte representing the hex value of the rune.
+func RuneToByte(char rune) byte {
 	var hexByte byte
 
 	switch {
@@ -49,4 +52,19 @@ func CharToByte(char rune) byte {
 	}
 
 	return hexByte
+}
+
+// XorStrings function    takes two hex strings and returns a hex string representing the XOR of the two strings.
+func XorStrings(hexStr1 []rune, hexStr2 []rune) string {
+	var xorHexStr	string
+
+	if len(hexStr1) != len(hexStr2) {
+		fmt.Println("error: XorStrings")
+	}
+
+	hexStr1Bytes := ToByteArray(hexStr1)
+	hexStr2Bytes := ToByteArray(hexStr2)
+
+
+	return xorHexStr
 }
