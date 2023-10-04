@@ -2,7 +2,6 @@ package main
 
 import (
     "fmt"
-    "github.com/AndyXT/cryptopal-go/pkg/bytes"
     "github.com/AndyXT/cryptopal-go/pkg/hex"
 )
 
@@ -18,7 +17,7 @@ func challenge1_1() {
 
     var b64Str string
 
-    b64Str = hexToBase64(hex)
+    b64Str = hex.ToBase64(hex)
 
     fmt.Printf("%s", b64Str)
     if b64 != b64Str {
@@ -26,7 +25,7 @@ func challenge1_1() {
     }
 }
 
-func hex.ToBase64(hexStr string) string {
+func hexToBase64(hexStr string) string {
     var base64 string
     hexStrSize := len(hexStr)
     hexStrSlice := []rune(hexStr)
