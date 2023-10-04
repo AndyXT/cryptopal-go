@@ -6,9 +6,8 @@ import (
 )
 
 func main() {
-	fmt.Println("vim-go")
-
 	challenge1_1()
+	challenge1_2()
 }
 
 func challenge1_1() {
@@ -17,8 +16,21 @@ func challenge1_1() {
 
 	b64Str := hex.ToBase64(hexStr)
 
-	fmt.Printf("%s", b64Str)
+	fmt.Printf("%s\n", b64Str)
 	if b64 != b64Str {
 		fmt.Println("Error: challenge1")
+	}
+}
+
+func challenge1_2() {
+	hexStr1 := "1c0111001f010100061a024b53535009181c"
+	hexStr2 := "686974207468652062756c6c277320657965"
+	xorHexStr := "746865206b696420646f6e277420706c6179"
+
+	xorStr := hex.XorStrings([]rune(hexStr1), []rune(hexStr2))
+
+	fmt.Printf("%s\n", xorStr)
+	if xorStr != xorHexStr {
+		fmt.Println("Error: challenge2")
 	}
 }

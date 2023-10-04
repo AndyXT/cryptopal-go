@@ -65,6 +65,11 @@ func XorStrings(hexStr1 []rune, hexStr2 []rune) string {
 	hexStr1Bytes := ToByteArray(hexStr1)
 	hexStr2Bytes := ToByteArray(hexStr2)
 
+	xorBytes := bytes.XorBytes(hexStr1Bytes, hexStr2Bytes)
+
+	for i := 0; i < len(xorBytes); i++ {
+		xorHexStr += string(bytes.ToHexRunes(xorBytes[i]))
+	}
 
 	return xorHexStr
 }

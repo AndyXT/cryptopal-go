@@ -36,3 +36,13 @@ func ToHexRunes(hexStrByte byte) []rune {
 
 	return hexStr
 }
+
+func XorBytes(bytes1 []byte, bytes2 []byte) []byte {
+	xorBytes := make([]byte, 0, len(bytes1))
+
+	for i := 0; i < len(bytes1); i++ {
+		xorBytes = append(xorBytes, bytes1[i]^bytes2[i])
+	}
+
+	return xorBytes
+}
