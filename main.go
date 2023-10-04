@@ -2,6 +2,8 @@ package main
 
 import (
     "fmt"
+    "github.com/AndyXT/cryptopal-go/pkg/bytes"
+    "github.com/AndyXT/cryptopal-go/pkg/hex"
 )
 
 func main() {
@@ -24,7 +26,7 @@ func challenge1_1() {
     }
 }
 
-func hexToBase64(hexStr string) string {
+func hex.ToBase64(hexStr string) string {
     var base64 string
     hexStrSize := len(hexStr)
     hexStrSlice := []rune(hexStr)
@@ -65,12 +67,12 @@ func hexCharToByte(char rune) byte {
         hexByte = byte(char) - byte('A') + 10
     default:
         fmt.Println("error: hexCharToByte")
-}
+    }
 
     return hexByte
 }
 
-func bytesToBase64Str(bytes []byte) string {
+func byte.ToBase64Str(bytes []byte) string {
     base64Alphabet := [64]rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'}
     b64Str := make([]rune, 0, len(bytes)*4/3)
 
