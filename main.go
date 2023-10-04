@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-    "github.com/AndyXT/cryptopal-go/pkg/hex"
+    "cryptopal-go/pkg/hex"
 )
 
 func main() {

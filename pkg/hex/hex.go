@@ -2,7 +2,7 @@ package hex
 
 import (
     "fmt"
-    "github.com/AndyXT/cryptopal-go/pkg/bytes"
+    "cryptopal-go/pkg/bytes"
 )
 func ToBase64(hexStr string) string {
     var base64 string
