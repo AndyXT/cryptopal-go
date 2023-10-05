@@ -2,12 +2,14 @@ package main
 
 import (
 	"cryptopal-go/pkg/hex"
+	"cryptopal-go/pkg/encoding"
 	"fmt"
 )
 
 func main() {
 	challenge1_1()
 	challenge1_2()
+	challenge1_3()
 }
 
 func challenge1_1() {
@@ -32,5 +34,16 @@ func challenge1_2() {
 	fmt.Printf("%s\n", xorStr)
 	if xorStr != xorHexStr {
 		fmt.Println("Error: challenge2")
+	}
+}
+
+func challenge1_3() {
+	hexStr := "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
+
+	decryptedBytes, _ := encoding.DecodeXorString([]rune(hexStr))
+
+	fmt.Printf("%s\n", decryptedBytes)
+	if string(decryptedBytes) != "Cooking MC's like a pound of bacon" {
+		fmt.Println("Error: challenge3")
 	}
 }
