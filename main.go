@@ -1,15 +1,17 @@
 package main
 
 import (
-  "cryptopal-go/pkg/hex"
-  "cryptopal-go/pkg/encoding"
-  "fmt"
+	"cryptopal-go/pkg/encoding"
+	"cryptopal-go/pkg/hex"
+	"cryptopal-go/pkg/util"
+	"fmt"
 )
 
 func main() {
   challenge1_1()
   challenge1_2()
   challenge1_3()
+	challenge1_4()
 }
 
 func challenge1_1() {
@@ -46,4 +48,25 @@ func challenge1_3() {
   if string(decryptedBytes) != "Cooking MC's like a pound of bacon" {
     fmt.Println("Error: challenge3")
   }
+}
+
+func challenge1_4() {
+	path := "4.txt"
+	encodedHexStrings := util.ReadFile(path)
+
+	var topScore float64
+	decodedBytes := make([]byte, 0)
+
+	for i, line := range encodedHexStrings {
+		decodedLineBytes, score := encoding.DecodeXorString([]rune(line))
+
+		if i == 0 {
+			topScore = score
+		} else if score > topScore {
+			topScore = score
+			decodedBytes = decodedLineBytes
+		}
+	}
+
+	fmt.Println(string(decodedBytes))
 }
