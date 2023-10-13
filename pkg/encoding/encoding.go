@@ -56,3 +56,33 @@ func getScore(encryptedBytes []byte) (float64, byte) {
 
   return bestScore, bestKey
 }
+
+func RepeatingXorKey(key *string, plainString *string) string {
+	keyLength := len(*key)
+	stringLength := len(*plainString)
+
+	repeatingKey := make([]rune, stringLength)
+
+	for i := 0; i < (stringLength - stringLength % keyLength); i++ {
+		repeatingKey = append(repeatingKey, []rune(*key)[stringLength % keyLength])
+	}
+
+	if stringLength % keyLength != 0 {
+		repeatingKey = append(repeatingKey, []rune(*key)[stringLength % keyLength])
+	}
+
+	return string(repeatingKey)
+}
+
+func RepeatingXor(key *string, plainString *string) []byte {
+	plainBytes := []byte(*plainString)
+	keyBytes := []byte(string(*key))
+
+	encryptedBytes := make([]byte, len(plainBytes))
+
+	for i := 0; i < len(plainBytes); i++ {
+		encryptedBytes[i] = plainBytes[i] ^ keyBytes[i]
+	}
+
+	return encryptedBytes
+}

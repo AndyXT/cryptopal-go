@@ -23,7 +23,7 @@ func ToBase64Str(bytes []byte) string {
   return string(b64Str)
 }
 
-// ToHexRunes function    takes a byte and returns a slice of runes representing the hex value of the byte.
+// ToHexRunes function    takes a byte and returns a slice of 2 runes representing the hex value of the byte.
 func ToHexRunes(hexStrByte byte) []rune {
   hexAlphabet := [16]rune{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',  'a', 'b', 'c', 'd', 'e', 'f'}
   hexStr := make([]rune, 0, 2)
@@ -37,6 +37,7 @@ func ToHexRunes(hexStrByte byte) []rune {
   return hexStr
 }
 
+// XorBytes function    takes 2 slices of bytes and returns a slice of bytes representing the xor of the 2 slices.
 func XorBytes(bytes1 []byte, bytes2 []byte) []byte {
   xorBytes := make([]byte, 0, len(bytes1))
 
@@ -45,4 +46,15 @@ func XorBytes(bytes1 []byte, bytes2 []byte) []byte {
   }
 
   return xorBytes
+}
+
+// SliceToHexStr function    takes a slice of bytes and returns a string representing the hex value of the bytes.
+func SliceToHexStr(bytes []byte) string {
+	hexStr := make([]rune, 0, len(bytes)*2)
+
+	for _, b := range bytes {
+		hexStr = append(hexStr, ToHexRunes(b)...)
+	}
+
+	return string(hexStr)
 }

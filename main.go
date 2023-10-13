@@ -1,6 +1,7 @@
 package main
 
 import (
+	"cryptopal-go/pkg/bytes"
 	"cryptopal-go/pkg/encoding"
 	"cryptopal-go/pkg/hex"
 	"cryptopal-go/pkg/util"
@@ -11,7 +12,8 @@ func main() {
   challenge1_1()
   challenge1_2()
   challenge1_3()
-	challenge1_4()
+  challenge1_4()
+  challenge1_5()
 }
 
 func challenge1_1() {
@@ -69,4 +71,27 @@ func challenge1_4() {
 	}
 
 	fmt.Println(string(decodedBytes))
+}
+
+func challenge1_5() {
+  plainString := "Burning 'em, if you ain't quick and nimble\nI go crazy when I hear a cymbal"
+  key := "ICE"
+  repeatingKey := encoding.RepeatingXorKey(&key, &plainString)
+
+  encodedBytes := encoding.RepeatingXor(&repeatingKey, &plainString)
+
+  fmt.Println(len(encodedBytes))
+
+  encodedHexStr := bytes.SliceToHexStr(encodedBytes)
+
+  fmt.Println(len(encodedHexStr))
+
+  if encodedHexStr != "0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272" {
+    fmt.Println("Error: challenge5")
+  }
+
+  fmt.Printf("%d\n", len(plainString))
+  fmt.Printf("%d\n", len("0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272"))
+  fmt.Printf("%s\n", "0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272")
+  fmt.Printf("%s\n", encodedHexStr)
 }
