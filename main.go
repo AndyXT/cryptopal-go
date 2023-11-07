@@ -17,7 +17,10 @@ func main() {
 	challenge1_2()
 	challenge1_3()
 	challenge1_4()
-	challenge1_5()
+	err = challenge1_5()
+	if err != nil {
+		fmt.Println("Error: Challenge 1.5")
+	}
 }
 
 func challenge1_1() error {
