@@ -14,9 +14,18 @@ func main() {
 	if err != nil {
 		fmt.Println("Error: Challenge 1.1")
 	}
-	challenge1_2()
-	challenge1_3()
-	challenge1_4()
+	err = challenge1_2()
+	if err != nil {
+		fmt.Println("Error: Challenge 1.2")
+	}
+	err = challenge1_3()
+	if err != nil {
+		fmt.Println("Error: Challenge 1.3")
+	}
+	err = challenge1_4()
+	if err != nil {
+		fmt.Println("Error: Challenge 1.4")
+	}
 	err = challenge1_5()
 	if err != nil {
 		fmt.Println("Error: Challenge 1.5")
@@ -37,31 +46,35 @@ func challenge1_1() error {
 	return nil
 }
 
-func challenge1_2() {
+func challenge1_2() error {
 	hexStr1 := "1c0111001f010100061a024b53535009181c"
 	hexStr2 := "686974207468652062756c6c277320657965"
-	xorHexStr := "746865206b696420646f6e277420706c6179"
+	ansHexStr := "746865206b696420646f6e277420706c6179"
 
 	xorStr := hex.XorStrings([]rune(hexStr1), []rune(hexStr2))
 
-	fmt.Printf("%s\n", xorStr)
-	if xorStr != xorHexStr {
+	if xorStr != ansHexStr {
 		fmt.Println("Error: challenge2")
+		return errors.New("Error Challenge 1.2")
 	}
+	fmt.Printf("%s\n", xorStr)
+	return nil
 }
 
-func challenge1_3() {
+func challenge1_3() error {
 	hexStr := "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
 
 	decryptedBytes, _ := encoding.DecodeXorString([]rune(hexStr))
 
-	fmt.Printf("%s\n", decryptedBytes)
 	if string(decryptedBytes) != "Cooking MC's like a pound of bacon" {
 		fmt.Println("Error: challenge3")
+		return errors.New("Error Challenge 1.3")
 	}
+	fmt.Printf("%s\n", decryptedBytes)
+	return nil
 }
 
-func challenge1_4() {
+func challenge1_4() error {
 	path := "4.txt"
 	encodedHexStrings := util.ReadFile(path)
 
@@ -80,6 +93,7 @@ func challenge1_4() {
 	}
 
 	fmt.Println(string(decodedBytes))
+	return nil
 }
 
 func challenge1_5() error {
