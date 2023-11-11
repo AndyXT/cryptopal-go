@@ -1,25 +1,22 @@
 package hex
 
 import (
-  "cryptopal-go/pkg/bytes"
-  "fmt"
+    "cryptopal-go/pkg/bytes"
+    "encoding/base64"
+    hx "encoding/hex"
+    "fmt"
 )
 
 // ToBase64 function    takes a hex string and returns a string representing the base64 value of the hex string.
 func ToBase64(hexStr string) string {
-  var base64 string
-  hexStrSize := len(hexStr)
-  hexStrSlice := []rune(hexStr)
+  hexToBytes, err := hx.DecodeString(hexStr)
+    if (err != nil) {
+        fmt.Println(err)
+    }
 
-  if hexStrSize%2 != 0 {
-    fmt.Println("error: hexToBase64")
-  }
+  b64Str := base64.StdEncoding.EncodeToString(hexToBytes)
 
-  hexToBytes := ToByteArray(hexStrSlice)
-
-  base64 = bytes.ToBase64Str(hexToBytes)
-
-  return base64
+  return b64Str
 }
 
 // ToByteArray function    takes a slice of runes(chars) representing a hex string and returns a slice of bytes representing the byte/ascii value of the string.
@@ -55,21 +52,26 @@ func RuneToByte(char rune) byte {
 }
 
 // XorStrings function    takes two hex strings and returns a hex string representing the XOR of the two strings.
-func XorStrings(hexStr1 []rune, hexStr2 []rune) string {
-  var xorHexStr string
+func XorStrings(hexStr1 string, hexStr2 string) string {
+    if len(hexStr1) != len(hexStr2) {
+        fmt.Println("error: XorStrings")
+    }
 
-  if len(hexStr1) != len(hexStr2) {
-    fmt.Println("error: XorStrings")
-  }
+    hexStr1Bytes, err := hx.DecodeString(hexStr1)
+    if (err != nil) {
+        fmt.Println(err)
+    }
+    hexStr2Bytes, err := hx.DecodeString(hexStr2)
+    if (err != nil) {
+        fmt.Println(err)
+    }
 
-  hexStr1Bytes := ToByteArray(hexStr1)
-  hexStr2Bytes := ToByteArray(hexStr2)
+    xorBytes, err := bytes.XorBytes(hexStr1Bytes, hexStr2Bytes)
+    if (err != nil) {
+        fmt.Println(err)
+    }
 
-  xorBytes := bytes.XorBytes(hexStr1Bytes, hexStr2Bytes)
+    xorHexStr := hx.EncodeToString(xorBytes)
 
-  for i := 0; i < len(xorBytes); i++ {
-    xorHexStr += string(bytes.ToHexRunes(xorBytes[i]))
-  }
-
-  return xorHexStr
+    return xorHexStr
 }

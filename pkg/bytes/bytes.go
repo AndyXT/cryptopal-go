@@ -38,14 +38,16 @@ func ToHexRunes(hexStrByte byte) []rune {
 }
 
 // XorBytes function    takes 2 slices of bytes and returns a slice of bytes representing the xor of the 2 slices.
-func XorBytes(bytes1 []byte, bytes2 []byte) []byte {
+func XorBytes(bytes1 []byte, bytes2 []byte) ([]byte, error) {
   xorBytes := make([]byte, 0, len(bytes1))
 
   for i := 0; i < len(bytes1); i++ {
     xorBytes = append(xorBytes, bytes1[i]^bytes2[i])
   }
 
-  return xorBytes
+  err := error(nil)
+
+  return xorBytes, err
 }
 
 // SliceToHexStr function    takes a slice of bytes and returns a string representing the hex value of the bytes.
