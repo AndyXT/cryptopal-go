@@ -78,10 +78,18 @@
 !_TAG_ROLE_DESCRIPTION!Go!package	imported	/imported package/
 !_TAG_ROLE_DESCRIPTION!Go!unknown	receiverType	/receiver type/
 0	.fleet/run.json	/^        go run$/;"	n	array:configurations
+0	.vscode/launch.json	/^                "-test.run",$/;"	s	array:configurations.2.args
+0	.vscode/launch.json	/^        {$/;"	o	array:configurations
+1	.vscode/launch.json	/^                "MyTestFunction"$/;"	s	array:configurations.2.args
+1	.vscode/launch.json	/^        {$/;"	o	array:configurations
 118d21a7-68b6-4511-8460-cb60296bed55	.idea/workspace.xml	/^      <changelist id="118d21a7-68b6-4511-8460-cb60296bed55" name="Changes" comment="" \/>$/;"	i
 118d21a7-68b6-4511-8460-cb60296bed55	.idea/workspace.xml	/^    <list default="true" id="118d21a7-68b6-4511-8460-cb60296bed55" name="Changes" comment="">$/;"	i
+2	.vscode/launch.json	/^        {$/;"	o	array:configurations
 2X9I3t4fXvQtKjNUlbj2jDvUVym	.idea/workspace.xml	/^  <component name="ProjectId" id="2X9I3t4fXvQtKjNUlbj2jDvUVym" \/>$/;"	i
-DecodeXorString	pkg/encoding/encoding.go	/^func DecodeXorString(hexStr []rune) ([]byte, float64) {$/;"	f	package:encoding	typeref:typename:([]byte, float64)
+3	.vscode/launch.json	/^        {$/;"	o	array:configurations
+4	.vscode/launch.json	/^        {$/;"	o	array:configurations
+5	.vscode/launch.json	/^        {$/;"	o	array:configurations
+DecodeXorString	pkg/encoding/encoding.go	/^func DecodeXorString(hexStr string) ([]byte, float64) {$/;"	f	package:encoding	typeref:typename:([]byte, float64)
 Default	.idea/workspace.xml	/^    <task active="true" id="Default" summary="Default task">$/;"	i
 ReadFile	pkg/util/util.go	/^func ReadFile(path string) []string {$/;"	f	package:util	typeref:typename:[]string
 RepeatingXor	pkg/encoding/encoding.go	/^func RepeatingXor(key *string, plainString *string) []byte {$/;"	f	package:encoding	typeref:typename:[]byte
@@ -92,8 +100,15 @@ ToBase64	pkg/hex/hex.go	/^func ToBase64(hexStr string) string {$/;"	f	package:he
 ToBase64Str	pkg/bytes/bytes.go	/^func ToBase64Str(bytes []byte) string {$/;"	f	package:bytes	typeref:typename:string
 ToByteArray	pkg/hex/hex.go	/^func ToByteArray(hexStrSlice []rune) []byte {$/;"	f	package:hex	typeref:typename:[]byte
 ToHexRunes	pkg/bytes/bytes.go	/^func ToHexRunes(hexStrByte byte) []rune {$/;"	f	package:bytes	typeref:typename:[]rune
-XorBytes	pkg/bytes/bytes.go	/^func XorBytes(bytes1 []byte, bytes2 []byte) []byte {$/;"	f	package:bytes	typeref:typename:[]byte
-XorStrings	pkg/hex/hex.go	/^func XorStrings(hexStr1 []rune, hexStr2 []rune) string {$/;"	f	package:hex	typeref:typename:string
+XorBytes	pkg/bytes/bytes.go	/^func XorBytes(bytes1 []byte, bytes2 []byte) ([]byte, error) {$/;"	f	package:bytes	typeref:typename:([]byte, error)
+XorStrings	pkg/hex/hex.go	/^func XorStrings(hexStr1 string, hexStr2 string) string {$/;"	f	package:hex	typeref:typename:string
+args	.vscode/launch.json	/^            "args": [$/;"	a	object:configurations.2
+args	.vscode/launch.json	/^            "args": [],$/;"	a	object:configurations.0
+args	.vscode/launch.json	/^            "args": [],$/;"	a	object:configurations.1
+args	.vscode/launch.json	/^            "args": [],$/;"	a	object:configurations.3
+buildFlags	.vscode/launch.json	/^            "buildFlags":""$/;"	s	object:configurations.0
+buildFlags	.vscode/launch.json	/^            "buildFlags":""$/;"	s	object:configurations.1
+buildFlags	.vscode/launch.json	/^            "buildFlags":""$/;"	s	object:configurations.3
 bytes	pkg/bytes/bytes.go	/^package bytes$/;"	p
 challenge1_1	main.go	/^func challenge1_1() error {$/;"	f	package:main	typeref:typename:error
 challenge1_2	main.go	/^func challenge1_2() error {$/;"	f	package:main	typeref:typename:error
@@ -101,12 +116,64 @@ challenge1_3	main.go	/^func challenge1_3() error {$/;"	f	package:main	typeref:ty
 challenge1_4	main.go	/^func challenge1_4() error {$/;"	f	package:main	typeref:typename:error
 challenge1_5	main.go	/^func challenge1_5() error {$/;"	f	package:main	typeref:typename:error
 configurations	.fleet/run.json	/^    "configurations": [$/;"	a
+configurations	.vscode/launch.json	/^    "configurations": [$/;"	a
 cryptopal-go	README.md	/^# cryptopal-go$/;"	c
+cwd	.vscode/launch.json	/^            "cwd": "${workspaceFolder}",$/;"	s	object:configurations.0
+cwd	.vscode/launch.json	/^            "cwd": "${workspaceFolder}",$/;"	s	object:configurations.1
+cwd	.vscode/launch.json	/^            "cwd": "${workspaceFolder}",$/;"	s	object:configurations.3
 encoding	pkg/encoding/encoding.go	/^package encoding$/;"	p
+env	.vscode/launch.json	/^            "env": {$/;"	o	object:configurations.0
+env	.vscode/launch.json	/^            "env": {$/;"	o	object:configurations.1
+env	.vscode/launch.json	/^            "env": {$/;"	o	object:configurations.3
+envFile	.vscode/launch.json	/^            "envFile": "${workspaceFolder}\/.env",$/;"	s	object:configurations.0
+envFile	.vscode/launch.json	/^            "envFile": "${workspaceFolder}\/.env",$/;"	s	object:configurations.1
+envFile	.vscode/launch.json	/^            "envFile": "${workspaceFolder}\/.env",$/;"	s	object:configurations.3
 getScore	pkg/encoding/encoding.go	/^func getScore(encryptedBytes []byte) (float64, byte) {$/;"	f	package:encoding	typeref:typename:(float64, byte)
 hex	pkg/hex/hex.go	/^package hex$/;"	p
-hx	main.go	/^	hx "encoding\/hex"$/;"	P	package:encoding/hex
+host	.vscode/launch.json	/^            "host": "127.0.0.1",$/;"	s	object:configurations.0
+host	.vscode/launch.json	/^            "host": "127.0.0.1",$/;"	s	object:configurations.1
+host	.vscode/launch.json	/^            "host": "127.0.0.1",$/;"	s	object:configurations.3
+hx	pkg/encoding/encoding.go	/^    hx "encoding\/hex"$/;"	P	package:encoding/hex
+hx	pkg/hex/hex.go	/^    hx "encoding\/hex"$/;"	P	package:encoding/hex
 main	main.go	/^func main() {$/;"	f	package:main
 main	main.go	/^package main$/;"	p
+mode	.vscode/launch.json	/^            "mode": "auto",$/;"	s	object:configurations.0
+mode	.vscode/launch.json	/^            "mode": "debug",$/;"	s	object:configurations.1
+mode	.vscode/launch.json	/^            "mode": "debug",$/;"	s	object:configurations.3
+mode	.vscode/launch.json	/^            "mode": "debug",$/;"	s	object:configurations.5
+mode	.vscode/launch.json	/^            "mode": "local",$/;"	s	object:configurations.4
+mode	.vscode/launch.json	/^            "mode": "test",$/;"	s	object:configurations.2
+name	.vscode/launch.json	/^            "name": "Attach main",$/;"	s	object:configurations.3
+name	.vscode/launch.json	/^            "name": "Attach to Process",$/;"	s	object:configurations.4
+name	.vscode/launch.json	/^            "name": "Debug current package",$/;"	s	object:configurations.1
+name	.vscode/launch.json	/^            "name": "Launch file",$/;"	s	object:configurations.5
+name	.vscode/launch.json	/^            "name": "Launch package",$/;"	s	object:configurations.0
+name	.vscode/launch.json	/^            "name": "Launch test function",$/;"	s	object:configurations.2
+port	.vscode/launch.json	/^            "port": 38697,$/;"	n	object:configurations.0
+port	.vscode/launch.json	/^            "port": 38697,$/;"	n	object:configurations.1
+port	.vscode/launch.json	/^            "port": 38697,$/;"	n	object:configurations.3
+processId	.vscode/launch.json	/^            "processId": 0$/;"	n	object:configurations.4
+processId	.vscode/launch.json	/^            "processId":"",$/;"	s	object:configurations.3
+program	.vscode/launch.json	/^            "program": "${fileDirname}",$/;"	s	object:configurations.1
+program	.vscode/launch.json	/^            "program": "${file}"$/;"	s	object:configurations.5
+program	.vscode/launch.json	/^            "program": "${workspaceFolder}",$/;"	s	object:configurations.0
+program	.vscode/launch.json	/^            "program": "${workspaceFolder}",$/;"	s	object:configurations.2
+program	.vscode/launch.json	/^            "program": "${workspaceFolder}\/main.go",$/;"	s	object:configurations.3
+remotePath	.vscode/launch.json	/^            "remotePath": "",$/;"	s	object:configurations.0
+remotePath	.vscode/launch.json	/^            "remotePath": "",$/;"	s	object:configurations.1
+remotePath	.vscode/launch.json	/^            "remotePath": "",$/;"	s	object:configurations.3
+request	.vscode/launch.json	/^            "request": "attach",$/;"	s	object:configurations.3
+request	.vscode/launch.json	/^            "request": "attach",$/;"	s	object:configurations.4
+request	.vscode/launch.json	/^            "request": "launch",$/;"	s	object:configurations.0
+request	.vscode/launch.json	/^            "request": "launch",$/;"	s	object:configurations.1
+request	.vscode/launch.json	/^            "request": "launch",$/;"	s	object:configurations.2
+request	.vscode/launch.json	/^            "request": "launch",$/;"	s	object:configurations.5
 singleByteXorCipher	pkg/encoding/encoding.go	/^func singleByteXorCipher(key byte, encryptedBytes []byte) []byte {$/;"	f	package:encoding	typeref:typename:[]byte
+type	.vscode/launch.json	/^            "type": "go",$/;"	s	object:configurations.0
+type	.vscode/launch.json	/^            "type": "go",$/;"	s	object:configurations.1
+type	.vscode/launch.json	/^            "type": "go",$/;"	s	object:configurations.2
+type	.vscode/launch.json	/^            "type": "go",$/;"	s	object:configurations.3
+type	.vscode/launch.json	/^            "type": "go",$/;"	s	object:configurations.4
+type	.vscode/launch.json	/^            "type": "go",$/;"	s	object:configurations.5
 util	pkg/util/util.go	/^package util$/;"	p
+version	.vscode/launch.json	/^    "version": "0.2.0",$/;"	s

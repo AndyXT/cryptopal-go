@@ -1,11 +1,16 @@
 package encoding
 
 import (
-	"cryptopal-go/pkg/hex"
+    hx "encoding/hex"
+    "fmt"
 )
 
-func DecodeXorString(hexStr []rune) ([]byte, float64) {
-	encryptedBytes := hex.ToByteArray([]rune(hexStr))
+func DecodeXorString(hexStr string) ([]byte, float64) {
+	// encryptedBytes := hex.ToByteArray([]rune(hexStr))
+	encryptedBytes, err := hx.DecodeString(hexStr)
+    if (err != nil) {
+        fmt.Println(err)
+    }
 
 	bestScore, key := getScore(encryptedBytes)
 
@@ -70,23 +75,7 @@ func RepeatingXorKey(key *string, plainString *string) string {
 	return string(repeatingKey)
 }
 
-//func RepeatingXorKey(key *string, plainString *string) string {
-//	keyLength := len(*key)
-//	stringLength := len(*plainString)
-//
-//	repeatingKey := make([]rune, stringLength)
-//
-//	for i := 0; i < (stringLength - stringLength % keyLength); i++ {
-//		repeatingKey = append(repeatingKey, []rune(*key)[stringLength % keyLength])
-//	}
-//
-//	if stringLength % keyLength != 0 {
-//		repeatingKey = append(repeatingKey, []rune(*key)[stringLength % keyLength])
-//	}
-//
-//	return string(repeatingKey)
-//}
-
+// RepeatingXor function    returns a byte array representing the XOR of a key and a plain text string.
 func RepeatingXor(key *string, plainString *string) []byte {
 	plainBytes := []byte(*plainString)
 	keyBytes := []byte(string(*key))
@@ -98,4 +87,22 @@ func RepeatingXor(key *string, plainString *string) []byte {
 	}
 
 	return encryptedBytes
+}
+
+func HammingDistanceByteSlice(bytes1 []byte, bytes2 []byte) int {
+	var hamDist = 0
+	for i := 0; i < len(bytes1); i++ {
+		hamDist += hammingDistanceByte(bytes1[i], bytes2[i])
+	}
+	return hamDist
+}
+
+func hammingDistanceByte(byte1 byte, byte2 byte) int {
+	var distance int
+	xor := byte1 ^ byte2
+	for xor > 0 {
+		distance += int(xor & 1)
+		xor >>= 1
+	}
+	return distance
 }
