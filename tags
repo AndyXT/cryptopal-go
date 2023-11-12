@@ -35,6 +35,15 @@
 !_TAG_KIND_DESCRIPTION!Go	s,struct	/structs/
 !_TAG_KIND_DESCRIPTION!Go	t,type	/types/
 !_TAG_KIND_DESCRIPTION!Go	v,var	/variables/
+!_TAG_KIND_DESCRIPTION!HTML	C,stylesheet	/stylesheets/
+!_TAG_KIND_DESCRIPTION!HTML	I,id	/identifiers/
+!_TAG_KIND_DESCRIPTION!HTML	J,script	/scripts/
+!_TAG_KIND_DESCRIPTION!HTML	a,anchor	/named anchors/
+!_TAG_KIND_DESCRIPTION!HTML	c,class	/classes/
+!_TAG_KIND_DESCRIPTION!HTML	h,heading1	/H1 headings/
+!_TAG_KIND_DESCRIPTION!HTML	i,heading2	/H2 headings/
+!_TAG_KIND_DESCRIPTION!HTML	j,heading3	/H3 headings/
+!_TAG_KIND_DESCRIPTION!HTML	t,title	/titles/
 !_TAG_KIND_DESCRIPTION!JSON	a,array	/arrays/
 !_TAG_KIND_DESCRIPTION!JSON	b,boolean	/booleans/
 !_TAG_KIND_DESCRIPTION!JSON	n,number	/numbers/
@@ -60,16 +69,17 @@
 !_TAG_PARSER_VERSION!Ant	0.0	/current.age/
 !_TAG_PARSER_VERSION!DTD	0.0	/current.age/
 !_TAG_PARSER_VERSION!Go	0.0	/current.age/
+!_TAG_PARSER_VERSION!HTML	0.0	/current.age/
 !_TAG_PARSER_VERSION!JSON	0.0	/current.age/
 !_TAG_PARSER_VERSION!Lua	0.0	/current.age/
 !_TAG_PARSER_VERSION!Markdown	1.1	/current.age/
 !_TAG_PARSER_VERSION!XML	0.0	/current.age/
 !_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
-!_TAG_PROC_CWD	/Users/andrestreto/go/src/github.com/AndyXT/cryptopal-go/	//
+!_TAG_PROC_CWD	/home/axtreto/go/src/github.com/AndyXT/cryptopal-go/	//
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	6.0.0	//
+!_TAG_PROGRAM_VERSION	6.0.0	/35abbb1/
 !_TAG_ROLE_DESCRIPTION!Ant!antfile	imported	/imported/
 !_TAG_ROLE_DESCRIPTION!DTD!element	attOwner	/attributes owner/
 !_TAG_ROLE_DESCRIPTION!DTD!parameterEntity	condition	/conditions/
@@ -77,21 +87,23 @@
 !_TAG_ROLE_DESCRIPTION!DTD!parameterEntity	partOfAttDef	/part of attribute definition/
 !_TAG_ROLE_DESCRIPTION!Go!package	imported	/imported package/
 !_TAG_ROLE_DESCRIPTION!Go!unknown	receiverType	/receiver type/
+!_TAG_ROLE_DESCRIPTION!HTML!class	attribute	/assigned as attributes/
+!_TAG_ROLE_DESCRIPTION!HTML!script	extFile	/referenced as external files/
+!_TAG_ROLE_DESCRIPTION!HTML!stylesheet	extFile	/referenced as external files/
 0	.fleet/run.json	/^        go run$/;"	n	array:configurations
 0	.vscode/launch.json	/^                "-test.run",$/;"	s	array:configurations.2.args
 0	.vscode/launch.json	/^        {$/;"	o	array:configurations
 1	.vscode/launch.json	/^                "MyTestFunction"$/;"	s	array:configurations.2.args
 1	.vscode/launch.json	/^        {$/;"	o	array:configurations
-118d21a7-68b6-4511-8460-cb60296bed55	.idea/workspace.xml	/^      <changelist id="118d21a7-68b6-4511-8460-cb60296bed55" name="Changes" comment="" \/>$/;"	i
-118d21a7-68b6-4511-8460-cb60296bed55	.idea/workspace.xml	/^    <list default="true" id="118d21a7-68b6-4511-8460-cb60296bed55" name="Changes" comment="">$/;"	i
 2	.vscode/launch.json	/^        {$/;"	o	array:configurations
-2X9I3t4fXvQtKjNUlbj2jDvUVym	.idea/workspace.xml	/^  <component name="ProjectId" id="2X9I3t4fXvQtKjNUlbj2jDvUVym" \/>$/;"	i
 3	.vscode/launch.json	/^        {$/;"	o	array:configurations
 4	.vscode/launch.json	/^        {$/;"	o	array:configurations
 5	.vscode/launch.json	/^        {$/;"	o	array:configurations
+Cryptopals Challenge 1 - 6	challenge1-6.html	/^<h1 id="cryptopals-challenge-1---6">Cryptopals Challenge 1 - 6<\/h1>$/;"	h
+Cryptopals Challenge 1 - 6	challenge1-6.md	/^# Cryptopals Challenge 1 - 6 $/;"	c
 DecodeXorString	pkg/encoding/encoding.go	/^func DecodeXorString(hexStr string) ([]byte, float64) {$/;"	f	package:encoding	typeref:typename:([]byte, float64)
-Default	.idea/workspace.xml	/^    <task active="true" id="Default" summary="Default task">$/;"	i
-ReadFile	pkg/util/util.go	/^func ReadFile(path string) []string {$/;"	f	package:util	typeref:typename:[]string
+HammingDistanceByteSlice	pkg/encoding/encoding.go	/^func HammingDistanceByteSlice(bytes1 []byte, bytes2 []byte) int {$/;"	f	package:encoding	typeref:typename:int
+ReadFile	pkg/util/util.go	/^func ReadFile(path string) ([]string, error) {$/;"	f	package:util	typeref:typename:([]string, error)
 RepeatingXor	pkg/encoding/encoding.go	/^func RepeatingXor(key *string, plainString *string) []byte {$/;"	f	package:encoding	typeref:typename:[]byte
 RepeatingXorKey	pkg/encoding/encoding.go	/^func RepeatingXorKey(key *string, plainString *string) string {$/;"	f	package:encoding	typeref:typename:string
 RuneToByte	pkg/hex/hex.go	/^func RuneToByte(char rune) byte {$/;"	f	package:hex	typeref:typename:byte
@@ -115,9 +127,11 @@ challenge1_2	main.go	/^func challenge1_2() error {$/;"	f	package:main	typeref:ty
 challenge1_3	main.go	/^func challenge1_3() error {$/;"	f	package:main	typeref:typename:error
 challenge1_4	main.go	/^func challenge1_4() error {$/;"	f	package:main	typeref:typename:error
 challenge1_5	main.go	/^func challenge1_5() error {$/;"	f	package:main	typeref:typename:error
+challenge1_6	main.go	/^func challenge1_6() error {$/;"	f	package:main	typeref:typename:error
 configurations	.fleet/run.json	/^    "configurations": [$/;"	a
 configurations	.vscode/launch.json	/^    "configurations": [$/;"	a
 cryptopal-go	README.md	/^# cryptopal-go$/;"	c
+cryptopals-challenge-1---6	challenge1-6.html	/^<h1 id="cryptopals-challenge-1---6">Cryptopals Challenge 1 - 6<\/h1>$/;"	I
 cwd	.vscode/launch.json	/^            "cwd": "${workspaceFolder}",$/;"	s	object:configurations.0
 cwd	.vscode/launch.json	/^            "cwd": "${workspaceFolder}",$/;"	s	object:configurations.1
 cwd	.vscode/launch.json	/^            "cwd": "${workspaceFolder}",$/;"	s	object:configurations.3
@@ -129,10 +143,12 @@ envFile	.vscode/launch.json	/^            "envFile": "${workspaceFolder}\/.env",
 envFile	.vscode/launch.json	/^            "envFile": "${workspaceFolder}\/.env",$/;"	s	object:configurations.1
 envFile	.vscode/launch.json	/^            "envFile": "${workspaceFolder}\/.env",$/;"	s	object:configurations.3
 getScore	pkg/encoding/encoding.go	/^func getScore(encryptedBytes []byte) (float64, byte) {$/;"	f	package:encoding	typeref:typename:(float64, byte)
+hammingDistanceByte	pkg/encoding/encoding.go	/^func hammingDistanceByte(byte1 byte, byte2 byte) int {$/;"	f	package:encoding	typeref:typename:int
 hex	pkg/hex/hex.go	/^package hex$/;"	p
 host	.vscode/launch.json	/^            "host": "127.0.0.1",$/;"	s	object:configurations.0
 host	.vscode/launch.json	/^            "host": "127.0.0.1",$/;"	s	object:configurations.1
 host	.vscode/launch.json	/^            "host": "127.0.0.1",$/;"	s	object:configurations.3
+hx	main.go	/^	hx "encoding\/hex"$/;"	P	package:encoding/hex
 hx	pkg/encoding/encoding.go	/^    hx "encoding\/hex"$/;"	P	package:encoding/hex
 hx	pkg/hex/hex.go	/^    hx "encoding\/hex"$/;"	P	package:encoding/hex
 main	main.go	/^func main() {$/;"	f	package:main

@@ -15,26 +15,32 @@ func main() {
 	err := challenge1_1()
 	if err != nil {
 		fmt.Println("Error: Challenge 1.1")
+		fmt.Println(err)
 	}
 	err = challenge1_2()
 	if err != nil {
 		fmt.Println("Error: Challenge 1.2")
+		fmt.Println(err)
 	}
 	err = challenge1_3()
 	if err != nil {
 		fmt.Println("Error: Challenge 1.3")
+		fmt.Println(err)
 	}
 	err = challenge1_4()
 	if err != nil {
 		fmt.Println("Error: Challenge 1.4")
+		fmt.Println(err)
 	}
 	err = challenge1_5()
 	if err != nil {
 		fmt.Println("Error: Challenge 1.5")
+		fmt.Println(err)
 	}
 	err = challenge1_6()
 	if err != nil {
 		fmt.Println("Error: Challenge 1.6")
+		fmt.Println(err)
 	}
 }
 
@@ -81,7 +87,10 @@ func challenge1_3() error {
 
 func challenge1_4() error {
 	path := "4.txt"
-	encodedHexStrings := util.ReadFile(path)
+	encodedHexStrings, err := util.ReadFile(path)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	var topScore float64
 	decodedBytes := make([]byte, 0)
@@ -106,7 +115,7 @@ func challenge1_5() error {
 	key := "ICE"
 	repeatingKey := encoding.RepeatingXorKey(&key, &plainString)
 
-	encodedBytes := encoding.RepeatingXor(&repeatingKey, &plainString)
+	encodedBytes := encoding.RepeatingXor(repeatingKey, plainString)
 
 	encodedHexStr := hx.EncodeToString(encodedBytes)
 
@@ -120,14 +129,20 @@ func challenge1_5() error {
 }
 
 func challenge1_6() error {
-	// path := "6.txt"
-	// b64Str := util.ReadFile(path)
-
+	//testing my hamming distance function
 	str1 := "this is a test"
 	str2 := "wokka wokka!!!"
-
 	hamDist := encoding.HammingDistanceByteSlice([]byte(str1), []byte(str2))
-	fmt.Println(hamDist)
+	if hamDist != 37 {
+		fmt.Println("Error: challenge6")
+		return errors.New("Challenge 1.6 hamming distance incorrect")
+	}
+
+	path := "6.txt"
+	b64Str, err := util.ReadFile(path)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	return nil
 }
