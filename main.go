@@ -139,9 +139,39 @@ func challenge1_6() error {
 	}
 
 	path := "6.txt"
-	b64Str, err := util.ReadFile(path)
+	b64Str, err := util.ReadFileAll(path)
 	if err != nil {
 		fmt.Println(err)
+	}
+
+	// variable to store best key size
+	var keySize uint32 = 0
+	var bestHammingDist uint32 = 0
+	for size := 2; size < 40; size++ {
+		// break into blocks of size
+		// get hamming distance of each block
+		hamDist1 := encoding.HammingDistanceByteSlice([]byte(b64Str[:size]), []byte(b64Str[size:2*size]))
+		hamDist2 := encoding.HammingDistanceByteSlice([]byte(b64Str[2*size:3*size]), []byte(b64Str[3*size:4*size]))
+
+		// average hamming distance
+		// normalize by dividing by size
+		hammingDistNorm := (hamDist1 + hamDist2) / uint32(2 * size)
+		// smallest normalized hamming distance is the key size
+		if size == 2 {
+			bestHammingDist = hammingDistNorm
+		} else if bestHammingDist > hammingDistNorm {
+			bestHammingDist = hammingDistNorm
+			keySize = uint32(size)
+		}
+	}
+
+	blockSize := keySize
+	for block := 0; block < len(b64Str) / int(keySize); block++ {
+		// get block
+		// get key
+		// xor block with key
+		// get score
+		// if score is better than best score, replace best score
 	}
 
 	return nil

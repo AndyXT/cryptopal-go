@@ -1,8 +1,10 @@
 package util
 
 import (
-	"os"
 	"bufio"
+	"fmt"
+	"io"
+	"os"
 )
 
 // ReadFile function    Reads a file and returns a slice of strings
@@ -44,3 +46,20 @@ func ReadFile(path string) ([]string, error) {
 //
 // 	return fileTextLines
 // }
+func ReadFileAll(path string) (string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+        fmt.Println("Error opening file:", err)
+		return "", err
+	}
+
+	defer file.Close()
+
+	content, err := io.ReadAll(file)
+    if err != nil {
+        fmt.Println("Error reading file:", err)
+        return "", err
+    }
+
+	return string(content), nil
+}
