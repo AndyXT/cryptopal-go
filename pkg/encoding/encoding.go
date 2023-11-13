@@ -89,19 +89,19 @@ func RepeatingXor(key string, plainString string) []byte {
 	return encryptedBytes
 }
 
-func HammingDistanceByteSlice(bytes1 []byte, bytes2 []byte) uint32 {
-	var hamDist uint32 = 0
+func HammingDistanceByteSlice(bytes1 []byte, bytes2 []byte) int {
+	var hamDist int = 0
 	for i := 0; i < len(bytes1); i++ {
 		hamDist += hammingDistanceByte(bytes1[i], bytes2[i])
 	}
 	return hamDist
 }
 
-func hammingDistanceByte(byte1 byte, byte2 byte) uint32 {
-	var distance uint32
+func hammingDistanceByte(byte1 byte, byte2 byte) int {
+	var distance int
 	xor := byte1 ^ byte2
 	for xor > 0 {
-		distance += uint32(xor & 1)
+		distance += int(xor & 1)
 		xor >>= 1
 	}
 	return distance

@@ -63,3 +63,25 @@ func ReadFileAll(path string) (string, error) {
 
 	return string(content), nil
 }
+func Transpose(input []string) []string {
+	rowCount := len(input)
+	columnCount := len(input[0])
+
+	if columnCount == 0 {
+		return []string{}
+	}
+	
+	transposed := make([]string, columnCount)
+
+	for i := 0; i < columnCount; i++ {
+		t := ""
+
+		for j := 0; j < rowCount; j++ {
+			t += string(input[j][i])
+		}
+
+		transposed[i] = t
+	}
+
+	return transposed
+}

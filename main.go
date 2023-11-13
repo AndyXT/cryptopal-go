@@ -145,8 +145,8 @@ func challenge1_6() error {
 	}
 
 	// variable to store best key size
-	var keySize uint32 = 0
-	var bestHammingDist uint32 = 0
+	var keySize int = 0
+	var bestHammingDist float64 = 0
 	for size := 2; size < 40; size++ {
 		// break into blocks of size
 		// get hamming distance of each block
@@ -155,24 +155,32 @@ func challenge1_6() error {
 
 		// average hamming distance
 		// normalize by dividing by size
-		hammingDistNorm := (hamDist1 + hamDist2) / uint32(2 * size)
+		hammingDistNorm := float64(hamDist1 + hamDist2) / float64(2 * size)
 		// smallest normalized hamming distance is the key size
 		if size == 2 {
 			bestHammingDist = hammingDistNorm
+			keySize = size
 		} else if bestHammingDist > hammingDistNorm {
 			bestHammingDist = hammingDistNorm
-			keySize = uint32(size)
+			keySize = size
 		}
 	}
+	fmt.Println(keySize)
 
 	blockSize := keySize
+	blocks := make([]string, 0)
 	for block := 0; block < len(b64Str) / int(keySize); block++ {
 		// get block
+		blocks = append(blocks, b64Str[block*int(blockSize):(block+1)*int(blockSize)])
 		// get key
 		// xor block with key
 		// get score
 		// if score is better than best score, replace best score
 	}
 
+	blocksT := util.Transpose(blocks)
+
+	fmt.Println(blocks)
+	fmt.Println(blocksT)
 	return nil
 }
