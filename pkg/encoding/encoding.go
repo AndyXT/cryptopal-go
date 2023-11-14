@@ -89,13 +89,24 @@ func RepeatingXor(key string, plainString string) []byte {
 	return encryptedBytes
 }
 
-func HammingDistanceByteSlice(bytes1 []byte, bytes2 []byte) int {
-	var hamDist int = 0
+func HammingDistanceByteSlice(bytes1 []byte, bytes2 []byte) (int, error) {
+	if len(bytes1) != len(bytes2) {
+		return 0, fmt.Errorf("byte slices are not of equal length")
+	}
+	
+	var hamDist int
 	for i := 0; i < len(bytes1); i++ {
 		hamDist += hammingDistanceByte(bytes1[i], bytes2[i])
 	}
-	return hamDist
+	return hamDist, nil
 }
+// func HammingDistanceByteSlice(bytes1 []byte, bytes2 []byte) int {
+// 	var hamDist int = 0
+// 	for i := 0; i < len(bytes1); i++ {
+// 		hamDist += hammingDistanceByte(bytes1[i], bytes2[i])
+// 	}
+// 	return hamDist
+// }
 
 func hammingDistanceByte(byte1 byte, byte2 byte) int {
 	var distance int

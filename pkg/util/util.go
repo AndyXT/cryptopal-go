@@ -85,3 +85,37 @@ func Transpose(input []string) []string {
 
 	return transposed
 }
+func TransposeBytes(input [][]byte) [][]byte {
+	// Check if input is empty
+	if len(input) == 0 {
+		return [][]byte{}
+	}
+	
+	// Get the 'column' count - length of the first 'row'
+	rowCount := len(input)
+	columnCount := len(input[0])
+
+	if columnCount == 0 {
+		return [][]byte{}
+	}
+	
+	// Make a 2D slice for the transposed result
+	transposed := make([][]byte, columnCount)
+	for i := range transposed {
+		transposed[i] = make([]byte, rowCount)  // Initialize each 'row'
+	}
+	
+	// Transpose the input
+	for i := 0; i < columnCount; i++ {
+		for j := 0; j < rowCount; j++ {
+			// Extra check if dimension is irregular matrix (length mismatch)
+			if i >= len(input[j]) {
+				fmt.Printf("Can't transpose irregular input, skipping value at [%d][%d]", j, i) 
+				continue
+			}
+			transposed[i][j] = input[j][i]
+		}
+	}
+
+	return transposed
+}
