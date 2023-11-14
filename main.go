@@ -5,7 +5,7 @@ import (
 	"cryptopal-go/pkg/hex"
 	"cryptopal-go/pkg/util"
 
-	// "encoding/base64"
+	"encoding/base64"
 	hx "encoding/hex"
 	"errors"
 	"fmt"
@@ -143,6 +143,10 @@ func challenge1_6() error {
 	if err != nil {
 		fmt.Println(err)
 	}
+	decodedBytes, err := base64.StdEncoding.DecodeString(b64Str)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	// variable to store best key size
 	var keySize int = 0
@@ -150,8 +154,8 @@ func challenge1_6() error {
 	for size := 2; size < 40; size++ {
 		// break into blocks of size
 		// get hamming distance of each block
-		hamDist1 := encoding.HammingDistanceByteSlice([]byte(b64Str[:size]), []byte(b64Str[size:2*size]))
-		hamDist2 := encoding.HammingDistanceByteSlice([]byte(b64Str[2*size:3*size]), []byte(b64Str[3*size:4*size]))
+		hamDist1 := encoding.HammingDistanceByteSlice(decodedBytes[:size], decodedBytes[size:2*size])
+		hamDist2 := encoding.HammingDistanceByteSlice(decodedBytes[2*size:3*size], decodedBytes[3*size:4*size])
 
 		// average hamming distance
 		// normalize by dividing by size
